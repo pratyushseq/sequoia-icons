@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="https://d1azc1qln24ryf.cloudfront.net/218140/SequoiaIcons/style-cf.css?u9lyn9"
+      href="https://i.icomoon.io/public/9f58f18535/SequoiaIcons/style.css"
     />
     <title>Sequoia Icons</title>
     <style>
@@ -15,6 +15,12 @@
           Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
           sans-serif;
         font-size: 16px;
+      }
+
+      .count {
+        font-size: 16px;
+        font-weight: normal;
+        text-align: center;
       }
 
       .icons {
@@ -41,8 +47,12 @@
   </head>
   <body>
     <h1>Sequoia Icons</h1>
-    <div class="icons"></div>
+    <div id="count" class="count"></div>
+    <div id="icons" class="icons"></div>
     <script>
+      const stripExtra = (str) =>
+        str.indexOf(",") !== -1 ? str.split(",")[0] : str;
+
       const fetchIcons = async () => {
         const iconsRes = await fetch(
           "https://i.icomoon.io/public/9f58f18535/SequoiaIcons/selection.json"
@@ -58,13 +68,14 @@
           .map(
             (icon) => `
     <div class="icon">
-    <i class="seq-${icon}"></i>
-    <span>seq-${icon}</span>
+    <i class="seq-${stripExtra(icon)}"></i>
+    <span>seq-${stripExtra(icon)}</span>
     </div>
     `
           )
           .join("");
-        document.querySelector(".icons").innerHTML = html;
+        document.getElementById("icons").innerHTML = html;
+        document.getElementById("count").innerHTML = `${icons.length} icons`;
       };
 
       const init = async () => {
