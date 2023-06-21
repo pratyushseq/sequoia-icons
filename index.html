@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="https://i.icomoon.io/public/9f58f18535/SequoiaIcons/style.css"
+      href="/style.css"
     />
     <title>Sequoia Icons</title>
     <style>
@@ -55,7 +55,7 @@
 
       const fetchIcons = async () => {
         const iconsRes = await fetch(
-          "https://i.icomoon.io/public/9f58f18535/SequoiaIcons/selection.json"
+          "/selection.json"
         );
         const { icons } = await iconsRes.json();
 
