@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="style.css"
+      href="https://i.icomoon.io/public/9f58f18535/SequoiaIcons/style.css"
     />
     <title>Sequoia | Icons</title>
     <style>
@@ -55,7 +55,7 @@
 
       const fetchIcons = async () => {
         const iconsRes = await fetch(
-          "selection.json"
+          "https://i.icomoon.io/public/9f58f18535/SequoiaIcons/selection.json"
         );
         const { icons } = await iconsRes.json();
 
@@ -67,11 +67,11 @@
         const html = icons
           .map(
             (icon) => `
-    <div class="icon">
-    <i class="seq-${stripExtra(icon)}"></i>
-    <span>seq-${stripExtra(icon)}</span>
-    </div>
-    `
+              <div class="icon">
+              <i class="seq-${stripExtra(icon)}"></i>
+              <span>seq-${stripExtra(icon)}</span>
+              </div>
+            `
           )
           .join("");
         document.getElementById("icons").innerHTML = html;
