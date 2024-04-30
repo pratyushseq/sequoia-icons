@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="https://cdn.icomoon.io/218140/SequoiaIcons/style.css"
+      href="https://i.icomoon.io/public/9f58f18535/SequoiaIcons/style.css"
     />
     <title>Sequoia | Icons</title>
     <style>
@@ -60,7 +60,7 @@
     <header>
       <h1>Sequoia Icons</h1>
       <div id="count" class="count"></div>
-      <a href="/production">View Production Icons</a>
+      <a href="/">View Dev Icons</a>
     </header>
     <div id="icons" class="icons"></div>
     <script>
@@ -69,12 +69,12 @@
 
       const fetchIcons = async () => {
         const iconsRes = await fetch(
-          "https://i.icomoon.io/public/9f58f18535/SequoiaIcons/selection.json"
+          "https://cdn.icomoon.io/218140/SequoiaIcons/selection.json"
         );
         const { icons } = await iconsRes.json();
 
         const iconNames = icons.map((icon) => icon.properties.name);
-        localStorage.setItem("icons", JSON.stringify(iconNames));
+        localStorage.setItem("prodIcons", JSON.stringify(iconNames));
         render(iconNames);
       };
 
@@ -94,10 +94,14 @@
       };
 
       const init = async () => {
-        let icons = localStorage.icons ? JSON.parse(localStorage.icons) : null;
+        let icons = localStorage.prodIcons
+          ? JSON.parse(localStorage.prodIcons)
+          : null;
         if (!icons) {
           await fetchIcons();
-          icons = localStorage.icons ? JSON.parse(localStorage.icons) : null;
+          icons = localStorage.prodIcons
+            ? JSON.parse(localStorage.prodIcons)
+            : null;
         } else {
           fetchIcons();
         }
